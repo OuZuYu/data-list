@@ -240,7 +240,9 @@ export default {
         let list = _get(data, this.dataPath, [])
 
         // 过滤掉null
-        if (list === null) list = []
+        if (list === null) {
+          list = []
+        }
         if (isDirectionDown) this.list = this.list.concat(list)
         else this.list.unshift(...list)
 
