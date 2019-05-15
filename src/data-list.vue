@@ -236,7 +236,11 @@ export default {
         let resp = await this.$axios.get(url + params)
         let data = resp.data
 
-        const list = _get(data, this.dataPath, [])
+        // 当读取结果为undefined时取默认值[]
+        let list = _get(data, this.dataPath, [])
+
+        // 过滤掉null
+        if (list === null) list = []
         if (isDirectionDown) this.list = this.list.concat(list)
         else this.list.unshift(...list)
 
