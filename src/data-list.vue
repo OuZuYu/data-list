@@ -236,12 +236,12 @@ export default {
         let resp = await this.$axios.get(url + params)
 
         // 当读取结果为undefined时取默认值[]
-        let list = _get(resp.data, this.dataPath, [])
+        let data = _get(resp.data, this.dataPath, [])
 
         // 过滤掉null
-        if (list === null) list = []
-        if (isDirectionDown) this.list = this.list.concat(list)
-        else this.list.unshift(...list)
+        if (data === null) data = []
+        if (isDirectionDown) this.list = this.list.concat(data)
+        else this.list.unshift(...data)
 
         if (isDirectionDown) this.nextPage++
 
